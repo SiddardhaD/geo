@@ -9,10 +9,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 const kGoogleApiKey = "AIzaSyAQ5H5Uo82sNkQSsD0ezK5hj2uAivN4Vt0";
 
-
 final customTheme = ThemeData(
   brightness: Brightness.dark,
-  inputDecorationTheme:const InputDecorationTheme(
+  inputDecorationTheme: const InputDecorationTheme(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(4.00)),
     ),
@@ -20,10 +19,10 @@ final customTheme = ThemeData(
       vertical: 12.50,
       horizontal: 10.00,
     ),
-  ), colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(secondary: Colors.redAccent),
+  ),
+  colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+      .copyWith(secondary: Colors.redAccent),
 );
-
-
 
 class PickLocation extends StatefulWidget {
   @override
@@ -54,9 +53,7 @@ class _PickLocationState extends State<PickLocation> {
           ),
           ElevatedButton(
             child: Text("Custom"),
-            onPressed: () async{
-              
-            },
+            onPressed: () async {},
           ),
         ],
       )),
@@ -118,7 +115,8 @@ Future<Null> displayPrediction(Prediction p, ScaffoldState scaffold) async {
       apiKey: kGoogleApiKey,
       apiHeaders: await GoogleApiHeaders().getHeaders(),
     );
-    PlacesDetailsResponse detail = await _places.getDetailsByPlaceId(p.placeId!);
+    PlacesDetailsResponse detail =
+        await _places.getDetailsByPlaceId(p.placeId!);
     final lat = detail.result.geometry!.location.lat;
     final lng = detail.result.geometry!.location.lng;
 
