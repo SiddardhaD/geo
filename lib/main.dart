@@ -10,9 +10,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'employeesData.dart';
 import 'geoFence/geofetch.dart';
-import 'pick/pickLocation.dart';
-
-
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +39,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   var path = Directory.current.path;
 
   @override
@@ -51,85 +47,94 @@ class _MyHomePageState extends State<MyHomePage> {
     enableHiveClass();
     super.initState();
   }
-  Future<void> enableHiveClass()async{
+
+  Future<void> enableHiveClass() async {
     Hive
-    ..init(path)
-    ..registerAdapter(EmployeedataAdapter());
-    
+      ..init(path)
+      ..registerAdapter(EmployeedataAdapter());
   }
-  enableHive()async{
+
+  enableHive() async {
     await Hive.initFlutter();
     debugPrint("Hive Intializtion us Done");
   }
+
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
-       
         title: Text(widget.title),
       ),
       body: Center(
-      
         child: Column(
-       
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-     
             TextButton(
-              child: Text("Client"),
-            style: TextButton.styleFrom( foregroundColor: Colors.white, backgroundColor: Colors.blue,),
-              onPressed:() {
-                Navigator.push(  
-                  context,  
-                  MaterialPageRoute(builder: (context) => const EmployeeList()),  
-                ); 
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const EmployeeList()),
+                );
               },
+              child: const Text("Client"),
             ),
             TextButton(
-              child: Text("Server"),
-            style: TextButton.styleFrom( foregroundColor: Colors.white,backgroundColor: Colors.blue,),
-              onPressed:() {
-                Navigator.push(  
-                  context,  
-                  MaterialPageRoute(builder: (context) => const ListEmployee()),  
-                ); 
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ListEmployee()),
+                );
               },
+              child: const Text("Server"),
             ),
             TextButton(
-              child: Text("Fence"),
-            style: TextButton.styleFrom( foregroundColor: Colors.white,backgroundColor: Colors.blue,),
-              onPressed:() {
-                Navigator.push(  
-                  context,  
-                  MaterialPageRoute(builder: (context) => const GeoFence()),  
-                ); 
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const GeoFence()),
+                );
               },
+              child: const Text("Fence"),
             ),
             TextButton(
-              child: Text("Live Track"),
-            style: TextButton.styleFrom( foregroundColor: Colors.white,backgroundColor: Colors.blue,),
-              onPressed:() {
-                Navigator.push(  
-                  context,  
-                  MaterialPageRoute(builder: (context) => const LiveTrack()),  
-                ); 
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LiveTrack()),
+                );
               },
+              child: const Text("Live Track"),
             ),
             TextButton(
               child: Text("Invoke Map"),
-            style: TextButton.styleFrom( foregroundColor: Colors.white,backgroundColor: Colors.blue,),
-              onPressed:()async {
-                await launchUrl(Uri.parse("google.navigation:q=17.433028, 78.3908344"));
-                // Navigator.push(  
-                //   context,  
-                //   MaterialPageRoute(builder: (context) => PickLocation()),  
-                // ); 
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue,
+              ),
+              onPressed: () async {
+                await launchUrl(
+                    Uri.parse("google.navigation:q=17.433028, 78.3908344"));
               },
             )
           ],
         ),
-      ), 
+      ),
     );
   }
 }

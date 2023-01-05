@@ -4,8 +4,17 @@ part 'employeesData.g.dart';
 
 @HiveType(typeId: 0)
 class Employeedata {
-
-  Employeedata({ this.liveLati,  this.liveLong,this.loginTime,this.logoutTime,this.latides,this.longdes,this.status,this.latisrc,this.longsrc,});
+  Employeedata({
+    this.liveLati,
+    this.liveLong,
+    this.loginTime,
+    this.logoutTime,
+    this.latides,
+    this.longdes,
+    this.status,
+    this.latisrc,
+    this.longsrc,
+  });
 
   @HiveField(0)
   double? liveLati;
